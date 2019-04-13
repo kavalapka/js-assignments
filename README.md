@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/kavalapka/js-assignments.svg?branch=master)](https://travis-ci.org/kavalapka/travis-badge)
+
+
 [![Brest Rolling Scopes](http://brest.rollingscopes.com/images/logo_rs_text.svg)](http://brest.rollingscopes.com/)
 
 ## Javascript Assignments  [![Build Status](https://travis-ci.org/rolling-scopes-school/js-assignments.svg?branch=master)](https://travis-ci.org/rolling-scopes-school/js-assignments)
