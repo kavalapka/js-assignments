@@ -531,12 +531,16 @@ function distinct(arr) {
  *   }
  */
 function group(array, keySelector, valueSelector) {
-  //console.log(array)
-  let country = array.filter((item, ind) => {
-    return keySelector
-  })
-  //console.log('country: ', country)
-  throw new Error('Not implemented');
+  array = array.map(it => [keySelector(it), valueSelector(it)]);
+
+  return array.reduce((acc, it) => {
+    if (acc.has(it[0])) {
+      acc.set(it[0], acc.get(it[0]).concat(it[1]))
+    } else {
+      acc.set(it[0], [it[1]])
+    }
+    return acc
+ }, new Map())
 }
 
 
