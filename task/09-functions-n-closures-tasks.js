@@ -87,24 +87,6 @@ function getPolynom() {
  */
 function memoize(func) {
   throw new Error('Not implemented');
-  console.log(func);
-  let cache = {};
-  return () => {
-    console.log('cache: ',cache)
-    if(cache[func])
-    {
-      console.log('ret cache', cache[func])
-      return cache[func];
-    }
-
-    console.log('first: ', cache)
-    let res = func();
-    console.log('hhh', func.constructor.name)
-    cache[func] = res;
-    console.log('first: ', cache)
-  }
-
-
 }
 
 
@@ -159,9 +141,6 @@ function retry(func, attempts) {
  */
 function logger(func, logFunc) {
   throw new Error('Not implemented');
-  console.log(func.name, logFunc.name)
-  console.log(`---\n${func.name} () starts \n${func.name} () ends`)
-  return `${func.name}`
 }
 
 
