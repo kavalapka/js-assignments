@@ -63,7 +63,23 @@ function parseBankAccount(bankAccount) {
  *                                                                                                'characters.'
  */
 function* wrapText(text, columns) {
-    throw new Error('Not implemented');
+    let curr
+    for (let w of text.split(' ')){
+        if (!curr) {
+          curr = w
+          continue
+        }
+        const cdd = `${curr} ${w}`
+        if (cdd.length > columns) {
+            yield curr
+            curr = w
+        } else {
+            curr = cdd
+        }
+    }
+    if (curr){
+        yield curr
+    }
 }
 
 
