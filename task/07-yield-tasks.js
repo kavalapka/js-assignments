@@ -54,7 +54,10 @@ function* getFibonacciSequence() {
 
   while (infinite || n--) {
     yield current;
-    [current, next] = [next, current + next];
+    let buff = current;
+    current = next;
+    next = buff + next;
+   // [current, next] = [next, current + next];
   }
 }
 
