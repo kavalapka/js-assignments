@@ -26,7 +26,9 @@
  *
  */
 function getComposition(f,g) {
-    throw new Error('Not implemented');
+  return function () {
+    return f(g(...arguments));
+  }
 }
 
 
@@ -47,7 +49,7 @@ function getComposition(f,g) {
  *
  */
 function getPowerFunction(exponent) {
-    throw new Error('Not implemented');
+  return (base) => Math.pow(base, exponent)
 }
 
 
@@ -84,8 +86,27 @@ function getPolynom() {
  *   memoizer() => the same random number  (next run, returns the previous cached result)
  */
 function memoize(func) {
-    throw new Error('Not implemented');
+  throw new Error('Not implemented');
+  console.log(func);
+  let cache = {};
+  return () => {
+    console.log('cache: ',cache)
+    if(cache[func])
+    {
+      console.log('ret cache', cache[func])
+      return cache[func];
+    }
+
+    console.log('first: ', cache)
+    let res = func();
+    console.log('hhh', func.constructor.name)
+    cache[func] = res;
+    console.log('first: ', cache)
+  }
+
+
 }
+
 
 
 /**
@@ -104,7 +125,12 @@ function memoize(func) {
  * retryer() => 2
  */
 function retry(func, attempts) {
-    throw new Error('Not implemented');
+  return () => {
+    for (let i = 1; i <= attempts; i++)
+      try {
+        return func();
+      } catch (e) {}
+  }
 }
 
 
@@ -132,7 +158,10 @@ function retry(func, attempts) {
  *
  */
 function logger(func, logFunc) {
-    throw new Error('Not implemented');
+  throw new Error('Not implemented');
+  console.log(func.name, logFunc.name)
+  console.log(`---\n${func.name} () starts \n${func.name} () ends`)
+  return `${func.name}`
 }
 
 
@@ -150,9 +179,10 @@ function logger(func, logFunc) {
  *   partialUsingArguments(fn, 'a','b','c','d')() => 'abcd'
  */
 function partialUsingArguments(fn) {
-    throw new Error('Not implemented');
+  return () => {
+    return fn('a','b','c','d')
+  }
 }
-
 
 /**
  * Returns the id generator function that returns next integer starting from specified number every time when invoking.
@@ -170,8 +200,11 @@ function partialUsingArguments(fn) {
  *   getId4() => 7
  *   getId10() => 11
  */
-function getIdGeneratorFunction(startFrom) {
-    throw new Error('Not implemented');
+function getIdGeneratorFunction(start) {
+  return function gen() {
+    return start++
+  }
+  return gen
 }
 
 
