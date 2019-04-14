@@ -223,7 +223,12 @@ function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
   let opened = '';
   let closed = '';
 
-  if(a > b) [a, b] = [b, a];
+  if(a > b) {
+    let buff = a;
+    a = b;
+    b = buff;
+    //[a, b] = [b, a]
+  };
 
   isStartIncluded ? opened = '[' : opened = '(';
   isEndIncluded ? closed = ']' : closed = ')'
